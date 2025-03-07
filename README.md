@@ -100,11 +100,5 @@
 - **Trie Implementation**: A data structure used to store a dynamic set or associative array where the keys are usually strings.
 - **AVL Tree Implementation**: A self-balancing binary search tree with a balance condition.
 
-### Algorithms
-
-- **Sorting Algorithms**: Implemented in various programming languages.
-- **Searching Algorithms**: Implemented in various programming languages.
-- **String Matching Algorithms**: Implemented in various programming languages.
-
 ---
 
