@@ -1,0 +1,13 @@
+from collections import Counter
+class Solution:
+    def findPairs(self, nums: List[int], k: int) -> int:
+        count = 0
+        num_count=Counter(nums)
+        for num in num_count:
+            if k == 0:
+                if num_count[num] > 1:
+                    count += 1
+            elif k > 0:
+                if num + k in num_count:
+                    count += 1
+        return count
