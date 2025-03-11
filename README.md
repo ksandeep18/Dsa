@@ -99,6 +99,8 @@
 
 - **Trie Implementation**: A data structure used to store a dynamic set or associative array where the keys are usually strings.
 - **AVL Tree Implementation**: A self-balancing binary search tree with a balance condition.
+- **Stack and Queue Implementation**: By using Array, Linkedlist, Stack, single Queue(for stack), two Queues(for stack).
+- **Design of Hashmap**: Implement hashmap using Linkedlist or List(dynamic Arrays) , About collision handling, Hashing Methods.
 
 ---
 
