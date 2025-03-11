@@ -1,0 +1,13 @@
+class Solution:
+    def merge(self, Int: List[List[int]]) -> List[List[int]]:
+        Int.sort(key=lambda i: i[0])
+        M=[]
+        n=len(Int)
+        i=1
+        for i in range(n):
+            if not M or M[-1][1]<Int[i][0]:
+                M.append(Int[i])
+            else:
+                M[-1]=[M[-1][0],max(M[-1][1],Int[i][1])]
+        return M
+                
