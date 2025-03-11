@@ -1,0 +1,25 @@
+class Solution:
+    def combinationSum(self, can: List[int], tar: int) -> List[List[int]]:
+        n=len(can)
+        res=[]
+        sol=[]
+        # using for loop generates more duplicates
+        # so better use index approach
+        def dfs(x,sum1):
+            if tar==sum1:
+                res.append(sol[:])
+                return 
+            elif sum1>tar or x==n:
+                return 
+            
+            dfs(x+1,sum1)
+            
+            sol.append(can[x])
+            dfs(x,sum1+can[x])
+            sol.pop()
+        dfs(0,0)
+        return res
+            
+                
+            
+        
