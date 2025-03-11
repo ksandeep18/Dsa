@@ -1,0 +1,25 @@
+class Solution:
+    def canJump(self, nums: List[int]) -> bool:
+        # at max nums[i] jumps from ith pos and if reached num[-1] then return true
+        # recurssive but dp is not an optimal for this question tc=O(n^2)
+        # n=len(nums)
+        # def can_reach(i):
+        #     if i==n-1:
+        #         return True
+            
+        #     for jump in range(1,nums[i]+1):
+        #         if can_reach(i+jump):
+        #             return True
+        #     return False
+        # return can_reach(0)
+        
+        # greedy tc=O(n)
+        # if target is <= value at ith + i(steps) then you can jump to target
+        n=len(nums)
+        tar=n-1
+        for i in range(n-1,-1,-1):
+            max_jump=nums[i]
+            if i+max_jump >= tar:
+                tar=i
+        return tar==0
+
