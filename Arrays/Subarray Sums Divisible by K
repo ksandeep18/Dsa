@@ -1,0 +1,24 @@
+class Solution:
+    def subarraysDivByK(self, nums: List[int], k: int) -> int:
+        # count = 0
+        # n = len(nums)
+        
+        # for start in range(n):
+        #     subarray_sum = 0
+        #     for end in range(start, n):
+        #         subarray_sum += nums[end]
+        #         if subarray_sum % k == 0:
+        #             count += 1
+        
+        # return count
+        prefix_sum_count = {0: 1}
+        count = 0
+        running_sum = 0
+
+        for num in nums:
+            running_sum += num
+            remainder = running_sum % k
+            count += prefix_sum_count.get(remainder, 0)
+            prefix_sum_count[remainder] = prefix_sum_count.get(remainder, 0) + 1
+
+        return count
