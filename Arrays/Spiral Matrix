@@ -1,0 +1,45 @@
+class Solution:
+    def spiralOrder(self, mat: List[List[int]]) -> List[int]:
+        m,n=len(mat),len(mat[0])
+        res=[]
+        if m<1 or n<1:
+            return []
+        right_wall=n
+        left_wall=-1
+        up_wall=0
+        down_wall=m
+        i,j=0,0
+        right,left,down,up=0,1,2,3
+        direction=right
+        while len(res)!=m*n:
+            if direction==right:
+                while j<right_wall:
+                    res.append(mat[i][j])
+                    j+=1
+                i,j=i+1,j-1
+                right_wall-=1
+                direction=down
+            elif direction==down:
+                while i<down_wall:
+                    res.append(mat[i][j])
+                    i+=1
+                i,j=i-1,j-1
+                down_wall-=1
+                direction=left
+            elif direction==left:
+                while j>left_wall:
+                    res.append(mat[i][j])
+                    j-=1
+                i,j=i-1,j+1
+                left_wall+=1
+                direction=up
+            elif direction==up:
+                while i>up_wall:
+                    res.append(mat[i][j])
+                    i-=1
+                i,j=i+1,j+1
+                up_wall+=1
+                direction=right
+        return res
+                
+                
