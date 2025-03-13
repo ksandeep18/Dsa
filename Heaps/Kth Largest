@@ -1,0 +1,15 @@
+import heapq
+class Solution:
+	def getKthLargestElement(self, arr: List[int], k: int) -> int:
+		
+		# there are multiple approaches 
+		# 1) Min heap 2) Max Heap 3) QuickSelect 4) Naive approache
+		min_heap=[]
+		for i in range(len(arr)):
+			heapq.heappush(min_heap,arr[i])
+			if len(min_heap)>k:
+				heapq.heappop(min_heap)
+		return min_heap[0]
+
+
+
