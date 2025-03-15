@@ -1,7 +1,7 @@
 Approach:
 1) Brute force: go through every subarray and find the sum then modulo with k if it is zero then increase count.
 2) Math based solution : track currsum and check what is the rem2 and store the rem2 in hashtable if not exist else get its value(i.e how many subarrays gives rem2 as remainder which ends with that key rem2)
-
+3) Dp based approach rember to handle negative currsum case
 class Solution:
     def subarraysDivByK(self, nums: List[int], k: int) -> int:
         # count = 0
@@ -27,5 +27,20 @@ class Solution:
             count+=prefix_count[rem]
             prefix_count[rem]+=1
         return count
+
+        dp = [0] * k
+        dp[0] = 1 
+        count = 0
+        summ = 0
+        
+        for num in nums:
+            summ =(summ+num)%k
+            if summ < 0:
+                summ += k
+            count += dp[summ]
+            dp[summ] += 1
+        
+        return count
+
 
 
