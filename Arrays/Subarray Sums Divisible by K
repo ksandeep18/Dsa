@@ -1,3 +1,7 @@
+Approach:
+1) Brute force: go through every subarray and find the sum then modulo with k if it is zero then increase count.
+2) Math based solution : track currsum and check what is the rem2 and store the rem2 in hashtable if not exist else get its value(i.e how many subarrays gives rem2 as remainder which ends with that key rem2)
+
 class Solution:
     def subarraysDivByK(self, nums: List[int], k: int) -> int:
         # count = 0
@@ -11,14 +15,17 @@ class Solution:
         #             count += 1
         
         # return count
-        prefix_sum_count = {0: 1}
-        count = 0
-        running_sum = 0
 
-        for num in nums:
-            running_sum += num
-            remainder = running_sum % k
-            count += prefix_sum_count.get(remainder, 0)
-            prefix_sum_count[remainder] = prefix_sum_count.get(remainder, 0) + 1
-
+        # input is nums array and integer k return the count of subarrays sum%k==0
+        prefix_count=defaultdict(int)
+        prefix_count[0]=1
+        count=0
+        curr_sum=0
+        for i in range(len(nums)):
+            curr_sum+=nums[i]
+            rem=curr_sum%k
+            count+=prefix_count[rem]
+            prefix_count[rem]+=1
         return count
+
+
