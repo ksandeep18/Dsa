@@ -1,0 +1,20 @@
+class Solution:
+    def mergeAlternately(self, word1: str, word2: str) -> str:
+        i,j=0,0
+        n,m=len(word1),len(word2)
+        res=[]
+        # use concatenation if you proceed with strings.
+        while (i>=0 and i<min(n,m)) and (j>=0 and j<min(n,m)):
+            res.append(word1[i])
+            res.append(word2[j])
+            i+=1
+            j+=1
+        while i<n:
+            res.append(word1[i])
+            i+=1
+        while j<m:
+            res.append(word2[j])
+            j+=1
+        return "".join(res)
+
+            
