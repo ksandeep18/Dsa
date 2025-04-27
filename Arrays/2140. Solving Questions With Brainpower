@@ -1,0 +1,42 @@
+class Solution:
+    def mostPoints(self, questions: List[List[int]]) -> int:
+
+# Approach 1
+        cache=[0]*(len(questions))
+        def backtrack(i):
+            if i>=len(questions):
+                return 0
+            if cache[i]:
+                return cache[i]
+            points,brainpow=questions[i]
+            cache[i]= max(
+            # skip
+            backtrack(i+1),
+            # choose
+            points+backtrack(i+1+brainpow)
+            )
+            return cache[i]
+        return backtrack(0)
+
+# Approach 2
+        n = len(questions)
+        dp = [0] * (n + 1)  # dp[i] = maximum points from question i to end
+
+        for i in range(n-1, -1, -1):  # start from last question
+            points, brainpower = questions[i]
+            
+            # Option 1: Solve this question
+            next_index = i + brainpower + 1
+            if next_index < n:
+                solve = points + dp[next_index]
+            else:
+                solve = points
+            
+            # Option 2: Skip this question
+            skip = dp[i+1]
+            
+            dp[i] = max(solve, skip)
+        
+        return dp[0]
+
+
