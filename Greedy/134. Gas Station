@@ -1,0 +1,40 @@
+from typing import List
+
+class Solution:
+    def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
+
+        # n = len(gas)
+        # for start in range(n):
+        #     # Quick check: if you can't even leave station start, skip it
+        #     if gas[start] < cost[start]:
+        #         continue
+            
+        #     fuel = 0
+        #     completed = True
+            
+        #     for k in range(n):
+        #         i = (start + k) % n
+        #         fuel += gas[i]     
+        #         if fuel < cost[i]:  
+        #             completed = False
+        #             break
+        #         fuel -= cost[i]     
+
+        #     if completed:
+        #         return start
+        
+        # return -1
+
+# approach 2 - optimized
+        tank=0
+        start=0
+        total=0
+        for i in range(len(gas)):
+
+            gain=gas[i]-cost[i]
+            tank+=gain
+            total+=gain
+            if tank<0:
+                start=i+1
+                tank=0
+        return start if total>=0 else -1
