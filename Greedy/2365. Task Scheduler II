@@ -1,0 +1,17 @@
+from typing import List
+
+class Solution:
+    def taskSchedulerII(self, tasks: List[int], space: int) -> int:
+        last_day = {}      
+        day = 1            
+        
+        for t in tasks:
+            if t in last_day:
+                earliest = last_day[t] + space + 1
+                if day < earliest:
+                    day = earliest
+
+            last_day[t] = day
+            day += 1
+
+        return day - 1
